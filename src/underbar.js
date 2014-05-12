@@ -197,6 +197,15 @@ var _ = {};
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.some = function(collection, iterator) {
+    var result = false;
+    _.each(collection, function(item) {
+      if(_.some.arguments.length === 2 && iterator(item)) {
+        result = true;
+      } else if (_.some.arguments.length === 1 && item !== false) {
+        result = true;
+     } 
+    });
+    return result;
     // TIP: There's a very clever way to re-use every() here.
   };
 
