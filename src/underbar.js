@@ -241,7 +241,12 @@ var _ = {};
 
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
-  _.defaults = function(obj) {
+  _.defaults = function(obj) { 
+    for(var i = 1; i < _.defaults.arguments.length; i++) {
+        if(Object.getOwnPropertyNames(_.defaults.arguments[i]).length > 0)
+          obj =  _.extend(_.defaults.arguments[i], obj);
+    }   
+    return obj; 
   };
 
 
